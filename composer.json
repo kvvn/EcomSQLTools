@@ -1,0 +1,22 @@
+{
+    "name": "Lvvn/SimpleMigrations",
+    "description": "Simple migrations for EVO",
+    "license": "MIT",
+    "keywords": ["mysql", "migrations"],
+    "authors": [
+        {
+            "name": "Vadim Kokin",
+            "email": "kokinv@edi.su"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "4.0.*",
+        "phpmyadmin/sql-parser": "3.4.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kvvn\\SimpleMigrations\\": "src"
+        }
+    }
+}
