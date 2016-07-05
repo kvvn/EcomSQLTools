@@ -13,29 +13,29 @@ class Config {
     private $connection1 = [
         'host' => 'localhost',
         'db' => 'test1',
-        'user' => 'kvvn',
-        'pass' => 'nau08fel',
+        'user' => 'user',
+        'pass' => '*******',
         'type'=> 'main'
     ];
     private $connection2 = [
         'host' => 'localhost',
         'db' => 'test2',
-        'user' => 'kvvn',
-        'pass' => 'nau08fel',
+        'user' => 'user',
+        'pass' => '*******',
         'type'=> 'main'
     ];
     private $connection3 = [
         'host' => 'localhost',
         'db' => 'test3',
-        'user' => 'kvvn',
-        'pass' => 'nau08fel',
+        'user' => 'user',
+        'pass' => '*******',
         'type' => 'subservice'
     ];
     private $connection4 = [
         'host' => 'localhost',
         'db' => 'test4',
-        'user' => 'kvvn',
-        'pass' => 'nau08fel',
+        'user' => 'user',
+        'pass' => '*******',
         'type' => 'subservice'
     ];
 

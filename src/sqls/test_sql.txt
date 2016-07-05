@@ -4,6 +4,6 @@ CREATE TABLE test_table
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     val VARCHAR(20) NOT NULL
 );
-ALTER TABLE test_table ADD CONSTRAINT unique_id UNIQUE (id);
+ALER TABLE test_table ADD CONSTRAINT unique_id UNIQUE (id);
 
 INSERT INTO test_table VALUE (null, 'test');

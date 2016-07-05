@@ -7,7 +7,6 @@
  */
 namespace Kvvn\SimpleMigrations;
 
-use SebastianBergmann\Exporter\Exception;
 
 class SimpleMigrations {
 
@@ -15,6 +14,7 @@ class SimpleMigrations {
 
     public function __construct()
     {
+        Logger::info('Init Job');
         $queries = [];
 
         $config  = new Config();
@@ -26,23 +26,30 @@ class SimpleMigrations {
         }
         $queries = call_user_func('array_merge', $queries);
         foreach($queries[0] as $k => $query) {
+            $query = trim($query);
             if(!$this->validateQueries($query)) {
-                die('Error in query: ' . $query);
+                Logger::error('Error in query: ' . $query);
+                die();
             }
         }
-
-
         foreach($connections as $connection) {
+            $error = 0;
             $dsn = sprintf('mysql:dbname=%s;host=%s', $connection['db'], $connection['host']);
             $pdo = new \PDO($dsn, $connection['user'], $connection['pass']);
+            $pdo->beginTransaction();
             foreach($queries[0] as $k => $query) {
                 if (!empty($query)) {
                     $pdo->exec($query);
                     if (!empty((int)$pdo->errorInfo()[0])) {
-
-                        print_r($pdo->errorInfo());
+                        Logger::error($pdo->errorInfo());
+                        $error = 1;
                     }
                 }
+            }
+            if($error == 1) {
+                $pdo->rollBack();
+            }else {
+                $pdo->commit();
             }
         }
     }
@@ -71,13 +78,25 @@ class SimpleMigrations {
     {
         $result = false;
         try{
-            $sqlParser = new \SqlParser\Parser($query);
+            $sqlParser = new \SqlParser\Parser($query, true);
             $result = true;
-        } catch (Exception $e) {
-            var_dump($e);
+
+        } catch (\SqlParser\Exceptions\ParserException $e) {
+            Logger::error($e->getMessage());
         }
 
 
         return $result;
     }
 }
+
+
+/**
+ *  Query for schema compare
+ *
+ *  SELECT col.TABLE_NAME, col.COLUMN_TYPE, col.CHARACTER_MAXIMUM_LENGTH, col.EXTRA
+ *  FROM information_schema.COLUMNS col
+ *  WHERE col.TABLE_SCHEMA = 'exite_ru'
+ *  ORDER BY col.TABLE_NAME, col.ORDINAL_POSITION;
+ *
+ **/
