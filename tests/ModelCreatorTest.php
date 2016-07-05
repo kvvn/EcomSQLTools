@@ -23,7 +23,7 @@ $this->addTableField(\'var\', self::COLUMN_STRING );
 
     public function testCreateModel()
     {
-        $testClass = new Kvvn\SimpleMigrations\ModelCreator("CREATE TABLE exite_ru.test (     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,     var VARCHAR(10) NOT NULL );");
+        $testClass = new Kvvn\EcomSQLTools\ModelCreator("CREATE TABLE exite_ru.test (     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,     var VARCHAR(10) NOT NULL );");
         $this->assertEquals($this->res, $testClass->CreateModel());
     }
 }

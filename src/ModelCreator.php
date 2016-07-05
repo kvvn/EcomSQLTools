@@ -6,7 +6,7 @@
  * Time: 5:06 PM
  */
 
-namespace Kvvn\SimpleMigrations;
+namespace Kvvn\EcomSQLTools;
 
 
 class ModelCreator {

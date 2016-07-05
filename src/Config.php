@@ -6,7 +6,7 @@
  * Time: 3:33 PM
  */
 
-namespace Kvvn\SimpleMigrations;
+namespace Kvvn\EcomSQLTools;
 
 
 class Config {

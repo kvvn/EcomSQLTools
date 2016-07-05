@@ -1,5 +1,5 @@
 {
-    "name": "Lvvn/SimpleMigrations",
+    "name": "Kvvn/EcomSQLTools",
     "description": "Simple migrations for EVO",
     "license": "MIT",
     "keywords": ["mysql", "migrations"],
@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Kvvn\\SimpleMigrations\\": "src"
+            "Kvvn\\EcomSQLTools\\": "src"
         }
     }
 }

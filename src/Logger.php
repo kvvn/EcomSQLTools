@@ -6,7 +6,7 @@
  * Time: 10:18 AM
  */
 
-namespace Kvvn\SimpleMigrations;
+namespace Kvvn\EcomSQLTools;
 
 
 class Logger {

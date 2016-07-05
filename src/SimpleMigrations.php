@@ -5,7 +5,7 @@
  * Date: 6/15/16
  * Time: 3:21 PM
  */
-namespace Kvvn\SimpleMigrations;
+namespace Kvvn\EcomSQLTools;
 
 
 class SimpleMigrations {
