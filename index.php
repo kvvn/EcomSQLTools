@@ -8,4 +8,4 @@
 
 require_once('vendor/autoload.php');
 
-new Kvvn\SimpleMigrations\SimpleMigrations();
+new Kvvn\EcomSQLTools\SimpleMigrations();

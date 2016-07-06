@@ -11,7 +11,7 @@ require_once('vendor/autoload.php');
 $sql = $argv[1];
 if(!empty($sql)){
     try{
-        new Kvvn\SimpleMigrations\ModelCreator($sql);
+        new Kvvn\EcomSQLTools\ModelCreator($sql);
     } catch (Exception $e) {
         echo 'Error in sql: ' . $e->getMessage();
     }
