@@ -19,7 +19,8 @@ class ModelCreator {
         'DATETIME' => 'COLUMN_DATETIME',
         'LONGBLOB' => 'COLUMN_BINARY',
         'TINYINT' => 'COLUMN_NUMERIC',
-        'TIMESTAMP' => 'COLUMN_NUMERIC'
+        'TIMESTAMP' => 'COLUMN_NUMERIC',
+        'TEXT' => 'COLUMN_STRING',
     ];
 
     private $template = '<?php
@@ -79,3 +80,4 @@ class %1$s extends AbstractTable
     }
 
 }
+
