@@ -8,8 +8,10 @@
 
 namespace Kvvn\EcomSQLTools;
 
+use SqlParser as SP;
 
-class ModelCreator {
+class ModelCreator
+{
 
     private $SQL;
     private $sqlTypes2EVO = [
@@ -40,32 +42,32 @@ class %1$s extends AbstractTable
     public function __construct($SQL)
     {
         $this->SQL = $SQL;
-        echo $this->CreateModel();
+        echo $this->createModel();
     }
 
-    public function CreateModel($SQL = null) {
-        if(!$SQL) {
+    public function createModel($SQL = null)
+    {
+        if (!$SQL) {
             $SQL = $this->SQL;
         }
-        $sqlParser = new \SqlParser\Parser($SQL, true);
+        $sqlParser = new SP\Parser($SQL, true);
         $table_name = (string)$sqlParser->statements[0]->name->table;
 
         $fieldsString = '';
 
-        //var_dump($sqlParser->statements[0]->fields);
-        foreach($sqlParser->statements[0]->fields as $field) {
+        foreach ($sqlParser->statements[0]->fields as $field) {
             $key_true = '';
-            if(in_array('AUTO_INCREMENT', $field->options->options)) {
+            if (in_array('AUTO_INCREMENT', $field->options->options)) {
                 $key_true = ', true' ;
             }
 
 
             $fieldsString .= sprintf(
-                    $this->fieldTemplate,
-                    $field->name,
-                    $this->sqlTypes2EVO[$field->type->name],
-                    $key_true
-                ) . PHP_EOL;
+                $this->fieldTemplate,
+                $field->name,
+                $this->sqlTypes2EVO[$field->type->name],
+                $key_true
+            ) . PHP_EOL;
         }
 
         $model = sprintf($this->template, $this->classNameFromTable($table_name), $table_name, $fieldsString);
@@ -73,11 +75,10 @@ class %1$s extends AbstractTable
         return $model;
     }
 
-    private function classNameFromTable($table_name) {
+    private function classNameFromTable($table_name)
+    {
         $nameParts = explode('_', $table_name);
         $prefix = array_map('ucfirst', $nameParts);
         return implode('', $prefix) . 'Table';
     }
-
 }
-
